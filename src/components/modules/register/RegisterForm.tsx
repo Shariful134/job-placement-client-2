@@ -18,7 +18,7 @@ import Link from "next/link";
 
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { registerUser } from "@/service/auth";
+import { registerUser } from "@/service";
 
 const formSchema = z.object({
   name: z.string().min(2, {

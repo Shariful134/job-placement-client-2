@@ -20,7 +20,7 @@ import { toast } from "sonner";
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { loginSchema } from "./loginValidation";
-import { loginUser } from "@/service/auth";
+import { loginUser } from "@/service";
 import { useUser } from "@/context/UserContext";
 
 export default function LoginForm() {

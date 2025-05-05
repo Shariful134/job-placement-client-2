@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "./service/auth";
+import { getCurrentUser } from "./service";
 
 type Role = keyof typeof roleBasedPrivateRoutes;
 

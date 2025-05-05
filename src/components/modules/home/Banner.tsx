@@ -71,7 +71,10 @@ const Banner = () => {
               .map((pair, idx) => (
                 <div key={idx} className="grid grid-cols-2 gap-4 flex-1">
                   {pair.map((img, i) => (
-                    <div key={i} className="relative w-full h-full">
+                    <div
+                      key={i}
+                      className="relative w-full  h-auto transition-transform duration-500 ease-in-out hover:-translate-y-2"
+                    >
                       <Image
                         src={img}
                         alt={`side${idx * 2 + i + 1}`}
