@@ -1,14 +1,41 @@
-import React from "react";
+"use client";
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
 import logoImg from "../../app/image/LogoE.png";
+import { useUser } from "@/context/UserContext";
+import { logout } from "@/service/auth";
+import { protectedRoutes } from "@/constatnt/constant";
+import { usePathname, useRouter } from "next/navigation";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { LogOut } from "lucide-react";
 
 const NavBar = () => {
+  const { user, setIsLoading } = useUser();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogOut = () => {
+    logout();
+    setIsLoading(true);
+    if (protectedRoutes.some((route) => pathname.match(route))) {
+      router.push("/");
+    }
+  };
+
+  // console.log(user);
   return (
     <div className="bg-[#1D4C9E] sticky top-0 z-50">
-      <div className="navbar container mx-auto shadow-sm">
+      <div className="navbar container mx-auto shadow-sm px-2">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -131,43 +158,37 @@ const NavBar = () => {
               </div>
             </div>
           </div>
-          <div className="dropdown dropdown-end ml-2">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar border border-white rounded-full hover:border-1 "
-            >
-              <div className="">
-                <Avatar>
+
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Avatar className="w-10 ms-2 h-10 border-1 border-white hover:border-2">
                   <AvatarImage
                     src="https://i.postimg.cc/cJ2f9Sbj/Screenshot-79.png"
                     alt="@shadcn"
                   />
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
-              </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
-          <Button className="bg-slate-100 hover:bg-slate-200 text-black border-2 border-white">
-            Login
-          </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href={`/${user?.role}/dashboard`}>Dashboard</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <a className="flex items-center gap-2" onClick={handleLogOut}>
+                    <LogOut></LogOut> Logout
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button className="bg-slate-100 hover:bg-slate-200 text-black border-2 ms-2 cursor-pointer border-white">
+              <Link href={"/login"}>Login</Link>
+            </Button>
+          )}
         </div>
       </div>
     </div>

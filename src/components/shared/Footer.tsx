@@ -3,7 +3,7 @@ import { Input } from "../ui/input";
 
 const Footer = () => {
   return (
-    <div className="mt-5">
+    <div className="mt-15">
       <hr className="text-gray-300" />
       <footer className="footer sm:footer-horizontal text-sm md:text-sm lg:text-lg p-10 ">
         <nav>
