@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Image from "next/image";
@@ -26,8 +27,8 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className=" container mx-auto grid grid-cols-12 gap-5 mt-5">
-      <div className="col-span-8 relative w-full h-[60vh] overflow-hidden  shadow-md">
+    <div className="container mx-auto grid grid-cols-12 gap-5 mt-5">
+      <div className="col-span-12 sm:col-span-8 relative  h-[40vh] sm:h-[60vh] overflow-hidden shadow-md">
         {images.map((img, index) => (
           <div
             key={index}
@@ -55,20 +56,30 @@ const Banner = () => {
           ))}
         </div>
       </div>
-      <div className="col-span-4  w-full ">
-        <div className="flex flex-col gap-4">
-          <div className="grid grid-cols-2 gap-3 ">
-            <Image src={side1} alt={`side1`} width={200} height={200} />
-            <Image src={side2} alt={`side2`} width={200} height={200} />
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <Image src={side3} alt={`side1`} width={200} height={200} />
-            <Image src={side4} alt={`side2`} width={200} height={200} />
-          </div>
-          <div className="grid grid-cols-2 gap-3 ">
-            <Image src={side5} alt={`side1`} width={200} height={200} />
-            <Image src={side6} alt={`side2`} width={200} height={200} />
-          </div>
+
+      <div className="hidden sm:block col-span-4 h-[60vh]">
+        <div className="flex flex-col gap-4 h-full">
+          {[side1, side2, side3, side4, side5, side6]
+            .reduce((acc, img, i) => {
+              const pairIndex = Math.floor(i / 2);
+              if (!acc[pairIndex]) acc[pairIndex] = [];
+              acc[pairIndex].push(img);
+              return acc;
+            }, [] as any[][])
+            .map((pair, idx) => (
+              <div key={idx} className="grid grid-cols-2 gap-4 flex-1">
+                {pair.map((img, i) => (
+                  <div key={i} className="relative w-full h-full">
+                    <Image
+                      src={img}
+                      alt={`side${idx * 2 + i + 1}`}
+                      fill
+                      className="object-cover rounded"
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
         </div>
       </div>
     </div>
