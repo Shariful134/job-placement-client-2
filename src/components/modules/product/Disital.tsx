@@ -5,16 +5,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Heart, ShoppingCart, Star } from "lucide-react";
 
-import fasionIcon from "../../../app/image/fasion-icon.png";
-import recommended from "../../../app/image/Recomended.png";
-import recommendedImg from "../../../app/image/re-mother-body.jpg";
-
-import discount1 from "../../../app/image/of-27.jpg";
-import discount2 from "../../../app/image/of-75.jpg";
-import discount3 from "../../../app/image/of-72.jpg";
+import digitalIcon from "../../../app/image/icon-digital-1.png";
 import { Button } from "@/components/ui/button";
 
-const Product = () => {
+const Digital = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
@@ -25,84 +19,30 @@ const Product = () => {
     fetchCategory();
   }, []);
 
-  const special = products?.filter(
-    (product) => product.category.name === "Fashion"
+  const special = products?.filter((product) =>
+    ["Electronics", "Mobile", "Computer", "Laptop"].includes(
+      product.category.name
+    )
   );
+
+ 
 
   return (
     <div className="container mx-auto mt-15 px-2 overflow-x-hidden ">
-      <div className="grid grid-cols-1 sm:grid-cols-12 gap-5">
-        {/* ========== RECOMMENDED SIDEBAR ========== */}
-        <div className="hidden lg:block col-span-12 lg:col-span-3  order-1 sm:order-none ">
-          <div className="bg-[#1D4C9E] py-2">
-            <div className="flex items-center ps-3 gap-3">
-              <Image
-                src={recommended}
-                width={20}
-                height={20}
-                alt="special icon"
-              />
-              <h2 className="text-sm text-white font-semibold">RECOMMENDED</h2>
-            </div>
-          </div>
-          <div className="bg-white pt-4 px-3 pb-4 space-y-4 flex flex-col gap-4 overflow-hidden overflow-x-hidden">
-            {special?.slice(0, 4)?.map((item) => (
-              <Link key={item._id} href={"/#"}>
-                <div className="flex items-center">
-                  <Image
-                    src={item.imageUrls[0]}
-                    alt={item.name}
-                    width={64}
-                    height={64}
-                    className="rounded object-cover"
-                  />
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-800 line-clamp-2 hover:text-blue-700">
-                      {item.name}
-                    </h3>
-                    {item.offerPrice ? (
-                      <div className="flex gap-2">
-                        <div className="text-sm text-gray-500 line-through">
-                          ${item.price}
-                        </div>
-                        <div className="text-sm font-bold text-blue-700">
-                          ${item.offerPrice}
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="text-sm font-bold text-blue-700">
-                        ${item.price}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="w-full h-auto transition-transform duration-500 ease-in-out hover:-translate-y-2 mt-5">
-            <Image
-              className="w-full h-auto"
-              src={recommendedImg}
-              width={1200}
-              height={200}
-              alt="recommended"
-            />
-          </div>
-        </div>
-
+      <div className="">
         {/* ========== FASHION & ACCESSORIES SECTION ========== */}
-        <div className="col-span-12 lg:col-span-9  order-2 sm:order-none overflow-x-hidden">
+        <div className=" overflow-x-hidden">
           <div>
-            <div className="flex justify-between">
+          <div className="flex justify-between">
               <div className="flex items-center gap-3">
                 <Image
-                  src={fasionIcon}
+                  src={digitalIcon}
                   width={15}
                   height={15}
                   alt="Fashion Icon"
                 />
                 <h2 className="text-lg text-[#222] font-semibold uppercase">
-                  fashion & accessories
+                 digital & electronics
                 </h2>
               </div>
               <Link href={"/#"}>
@@ -181,37 +121,6 @@ const Product = () => {
                 </div>
               ))}
             </div>
-
-            {/* Banner Section */}
-            <div className="grid grid-cols-12 gap-5">
-              <div className="col-span-4 h-auto transition-transform duration-500 ease-in-out hover:-translate-y-2">
-                <Image
-                  className="h-auto"
-                  src={discount1}
-                  width={1200}
-                  height={200}
-                  alt="Discount 1"
-                />
-              </div>
-              <div className="col-span-4 h-auto transition-transform duration-500 ease-in-out hover:-translate-y-2">
-                <Image
-                  className="h-auto"
-                  src={discount2}
-                  width={1200}
-                  height={200}
-                  alt="Discount 2"
-                />
-              </div>
-              <div className="col-span-4 h-auto transition-transform duration-500 ease-in-out hover:-translate-y-2">
-                <Image
-                  className="h-auto"
-                  src={discount3}
-                  width={1200}
-                  height={200}
-                  alt="Discount 3"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -219,4 +128,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default Digital;

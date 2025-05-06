@@ -36,7 +36,7 @@ const CategoryComponents = () => {
         <div className="flex justify-between items-center">
           <h2 className="text-3xl text-[#222] font-semibold">Categories</h2>
           <Link href={"/#"}>
-            <Button className="bg-white text-[#222] hover:bg-slate-100 border border-slate-300 hover:border-white">
+            <Button className="bg-[#1D4C9E] text-white  border-2 border-white">
               View All
             </Button>
           </Link>

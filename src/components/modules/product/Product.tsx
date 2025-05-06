@@ -22,7 +22,7 @@ const Product = () => {
   const special = products?.filter(
     (product) => product.category.name == "Electronics"
   );
-  console.log(special);
+
   return (
     <div className="container mx-auto mt-5 px-2 overflow-x-hidden">
       <div className="grid grid-cols-1 sm:grid-cols-12 gap-5">
