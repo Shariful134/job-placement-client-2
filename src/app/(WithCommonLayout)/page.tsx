@@ -6,6 +6,7 @@ import { MarqueeDemo } from "@/components/modules/home/Marque";
 import Digital from "@/components/modules/product/Disital";
 import Fasion from "@/components/modules/product/Fasion";
 import Featured from "@/components/modules/product/Featured";
+import FeatureSection from "@/components/modules/product/FeatureSection";
 import Product from "@/components/modules/product/Product";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Fasion></Fasion>
       <Digital></Digital>
       <Featured></Featured>
+      <FeatureSection></FeatureSection>
     </div>
   );
 }
