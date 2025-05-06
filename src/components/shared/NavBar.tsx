@@ -34,7 +34,7 @@ const NavBar = () => {
 
   // console.log(user);
   return (
-    <div className="bg-[#1D4C9E] sticky top-0 z-50">
+    <div className="bg-[#1D4C9E] sticky top-0 z-50 overflow-x-hidden ">
       <div className="navbar container mx-auto shadow-sm px-2">
         <div className="navbar-start">
           <div className="dropdown">

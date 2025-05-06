@@ -40,7 +40,7 @@ const CreateBrandModal = () => {
       formData.append("logo", imageFiles[0] as File);
 
       const res = await createBrand(formData);
-
+      console.log(res);
       if (res.success) {
         toast.success(res.message);
       } else {
@@ -54,7 +54,12 @@ const CreateBrandModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size="sm">Create Brand</Button>
+        <Button
+          className="bg-slate-300 text-black border-2 border-white hover:bg-slate-300 cursor-pointer"
+          size="sm"
+        >
+          Create Brand
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -101,7 +106,10 @@ const CreateBrandModal = () => {
               )}
             />
 
-            <Button type="submit" className="w-full rounded-sm">
+            <Button
+              type="submit"
+              className="bg-slate-300 hover:bg-slate-300 text-black border-2 ms-2 cursor-pointer border-white rounded-sm"
+            >
               {isSubmitting ? "Creating...." : "Create"}
             </Button>
           </form>

@@ -447,7 +447,11 @@ export default function UpdateProductForm({ product }: { product: IProduct }) {
             ))}
           </div>
 
-          <Button type="submit" className="mt-5 w-full" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            className="mt-5 w-full  bg-slate-300 hover:bg-slate-300 text-black border-2 border-white cursor-pointer"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? "Updating Product....." : "Update Product"}
           </Button>
         </form>

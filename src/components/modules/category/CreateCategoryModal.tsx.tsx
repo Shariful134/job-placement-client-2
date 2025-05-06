@@ -57,7 +57,9 @@ const CreateCategoryModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Create Category</Button>
+        <Button className="bg-slate-300 hover:bg-slate-300 border-2 border-white text-black">
+          Create Category
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -116,7 +118,10 @@ const CreateCategoryModal = () => {
               )}
             </div>
 
-            <Button type="submit" className="mt-5 w-full">
+            <Button
+              type="submit"
+              className="mt-5 w-full bg-slate-300 text-back hover:bg-slate-300 border-2 border-white cursor-pointer"
+            >
               {isSubmitting ? "Creating...." : "Create"}
             </Button>
           </form>

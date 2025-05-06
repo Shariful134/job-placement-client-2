@@ -20,8 +20,9 @@ import { toast } from "sonner";
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { loginSchema } from "./loginValidation";
-import { loginUser } from "@/service";
+
 import { useUser } from "@/context/UserContext";
+import { loginUser } from "@/service/auth";
 
 export default function LoginForm() {
   const form = useForm({

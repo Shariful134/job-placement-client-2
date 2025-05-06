@@ -56,7 +56,11 @@ const DiscountModal = ({ selectedIds, setSelectedIds }: TModalProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button disabled={!selectedIds?.length} size="sm">
+        <Button
+          disabled={!selectedIds?.length}
+          size="sm"
+          className=" bg-slate-300 hover:bg-slate-300 text-black border-2 border-white"
+        >
           Add Flash Sale
         </Button>
       </DialogTrigger>
@@ -89,7 +93,10 @@ const DiscountModal = ({ selectedIds, setSelectedIds }: TModalProps) => {
               )}
             />
 
-            <Button type="submit" className="w-full rounded-sm">
+            <Button
+              type="submit"
+              className=" rounded-sm bg-slate-300 border-2 border-white hover:bg-slate-300 text-black cursor-pointer"
+            >
               {isSubmitting ? "Adding...." : "Add"}
             </Button>
           </form>

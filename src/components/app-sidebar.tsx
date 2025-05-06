@@ -26,6 +26,11 @@ const data = {
 
   documents: [
     {
+      name: "Create Shop",
+      url: "/admin/shop/create-shop",
+      icon: IconReport,
+    },
+    {
       name: "Manage Brand",
       url: "/admin/shop/brand",
       icon: IconReport,
